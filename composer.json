@@ -1,0 +1,46 @@
+{
+    "name": "alfred-project/alfred",
+    "description": "gestor de proyectos",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jose Manuel Pantoja",
+            "email": "jmpantoja@gmail.com",
+            "homepage": "https://github.com/alfred-project/"
+        }
+    ],
+    "require": {
+        "marc-mabe/php-enum": "^3.1",
+        "ramsey/uuid": "^3.8",
+        "symfony/console": "^4.2",
+        "webmozart/assert": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Alfred\\Alfred\\": "src/Alfred"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "apcu-autoloader": true,
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "github_organization": "alfred-project",
+        "github_repository": "alfred"
+    },
+    "require-dev": {
+        "behat/behat": "^3.5",
+        "ciaranmcnulty/phpspec-typehintedmethods": "^4.0",
+        "leanphp/phpspec-code-coverage": "dev-upgrade",
+        "memio/spec-gen": "^0.9.0",
+        "phpspec/phpspec": "^5.1",
+        "symfony/var-dumper": "^4.2"
+    },
+    "repositories": [{
+            "type": "vcs",
+            "url": "https://github.com/shulard/phpspec-code-coverage.git"
+        }]
+}
