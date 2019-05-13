@@ -1,0 +1,13 @@
+services:
+    _defaults:
+        autowire: true
+        public: false
+
+    Alfred\Alfred\Infrastructure\UI\Console\Application:
+        public: true
+
+
+    Alfred\Alfred\Infrastructure\UI\Console\Command\:
+        resource: '../src/Alfred/Infrastructure/UI/Console/Command'
+        public: true
+        tags: [alfred.command]
