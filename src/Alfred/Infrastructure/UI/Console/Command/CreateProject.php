@@ -13,7 +13,10 @@ declare(strict_types=1);
 
 namespace Alfred\Alfred\Infrastructure\UI\Console\Command;
 
+use League\Tactician\CommandBus;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Comando para crear nuevos proyectos a partir de una template
@@ -21,11 +24,19 @@ use Symfony\Component\Console\Command\Command;
 class CreateProject extends Command
 {
     /**
-     * CreateProject constructor.
+     * @var \League\Tactician\CommandBus
      */
-    public function __construct()
+    private $commandBus;
+
+    /**
+     * CreateProject constructor.
+     *
+     * @param \League\Tactician\CommandBus $commandBus
+     */
+    public function __construct(CommandBus $commandBus)
     {
         parent::__construct('create-project');
+        $this->commandBus = $commandBus;
     }
 
     /**
@@ -36,5 +47,21 @@ class CreateProject extends Command
         $this
             ->setDescription('Creates a new project.')
             ->setHelp('This command allows you to create a new project from a template');
+    }
+
+
+    /**
+     * @inheritdoc
+     *
+     * @param \Symfony\Component\Console\Input\InputInterface $input
+     * @param \Symfony\Component\Console\Output\OutputInterface $output
+     *
+     * @return int|void|null
+     */
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $command = new \Alfred\Alfred\Application\UseCase\CreateProject();
+
+        return $this->commandBus->handle($command);
     }
 }
