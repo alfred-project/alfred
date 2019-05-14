@@ -21,6 +21,7 @@
         <exclude name="Symfony.Commenting.FunctionComment.SpacingAfterParamType"/>
         <exclude name="SlevomatCodingStandard.ControlStructures.NewWithoutParentheses.UselessParentheses"/>
         <exclude name="SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter"/>
+        <exclude name="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly.ReferencedGeneralException"/>
 
         <exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly"/>
         <exclude name="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
