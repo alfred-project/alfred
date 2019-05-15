@@ -15,7 +15,7 @@ namespace Alfred\Alfred\Infrastructure;
 
 use Alfred\Alfred\Infrastructure\DependencyInjection\CommandCompilerPass;
 use Alfred\Alfred\Infrastructure\UI\Console\Application;
-use Alfred\Alfred\Infrastructure\UI\Console\Command\CreateProject;
+use Alfred\Alfred\Infrastructure\UI\Console\Command\CreateProjectCommand;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
@@ -63,7 +63,7 @@ final class AppKernel extends Kernel
     {
         $projectPath = realpath(__DIR__.'/../../..');
 
-        $loader->load($projectPath.'/config/services.yml');
+        $loader->load($projectPath.'/config/services.yaml');
     }
 
     /**
@@ -73,7 +73,7 @@ final class AppKernel extends Kernel
      */
     public function getConsoleApplication(): Application
     {
-        $this->getContainer()->get(CreateProject::class);
+        $this->getContainer()->get(CreateProjectCommand::class);
 
         return $this->getContainer()->get(Application::class);
     }
